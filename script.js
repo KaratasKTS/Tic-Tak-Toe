@@ -34,8 +34,24 @@ if (gameboard[0][0] === gameboard[0][1] && gameboard[0][1] === gameboard[0][2]||
        gameboard[0][2] === gameboard[1][2] && gameboard[1][2] === gameboard[2][2]){
         console.log('yay vertical matched ') 
        }
-
+       if (gameboard[0][0] !== gameboard[0][1] && gameboard[0][1] !== gameboard[0][2]||
+        gameboard[1][0] !== gameboard[1][1] && gameboard[1][1] !== gameboard[1][2]||
+        gameboard[2][0] !== gameboard[2][1] && gameboard[2][1] !== gameboard[2][2]||
+        gameboard[0][0] !== gameboard[1][1] && gameboard[1][1] !== gameboard[2][2]||
+        gameboard[2][0] !== gameboard[1][1] && gameboard[1][1] !== gameboard[0][2]||
+        gameboard[0][0] !== gameboard[1][0] && gameboard[1][0] !== gameboard[2][0]||
+        gameboard[0][1] !== gameboard[1][1] && gameboard[1][1] !== gameboard[2][1]||
+        gameboard[0][2] !== gameboard[1][2] && gameboard[1][2] !== gameboard[2][2]
+    ){
+        console.log('its a tie')
+        } 
     }
+
+    
+    
+       
+    
+        
    evalBoard();
    
 
