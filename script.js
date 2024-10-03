@@ -8,7 +8,7 @@ let init = (() => {
    for( let i=0; i !==3 ;  i++ ){
        gameboard[i] = [];
        for(let j = 0; j < 3; j++)
-        gameboard[i][j] = '';
+        gameboard[i][j] = i*2;
    
    }
     console.log(gameboard);
@@ -24,7 +24,7 @@ let init = (() => {
 NEED TO MAKE  APPEND TO DOM TOO 
 */
 function handleEvent(event) {
-    const { score, gameboard, truePlayerOne, truePlayerTwo, falsePlayerOne, falsePlayerTwo } = init;
+    const { score, gameboard, truePlayerOne, truePlayerTwo, falsePlayerOne, falsePlayerTwo, } = init;
     let boxed = event.target;
     let row = boxed.getAttribute('data-row');
     let col = boxed.getAttribute('data-col');
@@ -32,18 +32,20 @@ function handleEvent(event) {
 
     if (score.playerOne === true) {
         
-        if (gameboard[row][col] === '') {
+        if (gameboard[row][col] !== 'X' || '') {
             gameboard[row][col] = 'X'; 
             falsePlayerOne(); 
             evalBoard();
+            boxed.innerHTML = 'X';
             console.log(gameboard);
         }
     } else {
         
-        if (gameboard[row][col] === '') {
+        if (gameboard[row][col] !== 'X' || '')  {
             gameboard[row][col] = 'O'; 
             truePlayerOne(); 
             evalBoard();
+            boxed.innerHTML = 'O';
             console.log(gameboard);
         }
     }
@@ -52,34 +54,27 @@ function handleEvent(event) {
 // WIN EVALUATOR, this counts equates epty boxes as a match, need fix 
 function evalBoard (){
     const {gameboard} = init;
+      
 
-if (gameboard[0][0] === gameboard[0][1] && gameboard[0][1] === gameboard[0][2]||
-    gameboard[1][0] === gameboard[1][1] && gameboard[1][1] === gameboard[1][2]||
-    gameboard[2][0] === gameboard[2][1] && gameboard[2][1] === gameboard[2][2]){
-    console.log('yay horizontal matched ') 
-    } 
+        if (gameboard[0][0] === gameboard[0][1] && gameboard[0][1] === gameboard[0][2]){
+            console.log('yay horizontal matched ') 
+            } 
+        
+            else if (gameboard[0][0] === gameboard[1][1] && gameboard[1][1] === gameboard[2][2]||
+                gameboard[2][0] === gameboard[1][1] && gameboard[1][1] === gameboard[0][2]){
+            console.log('yay crosses matched ') ;
+            }
+            else if(gameboard[0][0] === gameboard[1][0] && gameboard[1][0] === gameboard[2][0]||
+               gameboard[0][1] === gameboard[1][1] && gameboard[1][1] === gameboard[2][1]||
+               gameboard[0][2] === gameboard[1][2] && gameboard[1][2] === gameboard[2][2]){
+                console.log('yay vertical matched ');
+               }
+              
+            
+            }
 
-    if (gameboard[0][0] === gameboard[1][1] && gameboard[1][1] === gameboard[2][2]||
-        gameboard[2][0] === gameboard[1][1] && gameboard[1][1] === gameboard[0][2]){
-    console.log('yay crosses matched ') 
-    }
-    if(gameboard[0][0] === gameboard[1][0] && gameboard[1][0] === gameboard[2][0]||
-       gameboard[0][1] === gameboard[1][1] && gameboard[1][1] === gameboard[2][1]||
-       gameboard[0][2] === gameboard[1][2] && gameboard[1][2] === gameboard[2][2]){
-        console.log('yay vertical matched ') 
-       }
-       if (gameboard[0][0] !== gameboard[0][1] && gameboard[0][1] !== gameboard[0][2]||
-        gameboard[1][0] !== gameboard[1][1] && gameboard[1][1] !== gameboard[1][2]||
-        gameboard[2][0] !== gameboard[2][1] && gameboard[2][1] !== gameboard[2][2]||
-        gameboard[0][0] !== gameboard[1][1] && gameboard[1][1] !== gameboard[2][2]||
-        gameboard[2][0] !== gameboard[1][1] && gameboard[1][1] !== gameboard[0][2]||
-        gameboard[0][0] !== gameboard[1][0] && gameboard[1][0] !== gameboard[2][0]||
-        gameboard[0][1] !== gameboard[1][1] && gameboard[1][1] !== gameboard[2][1]||
-        gameboard[0][2] !== gameboard[1][2] && gameboard[1][2] !== gameboard[2][2]
-    ){
-        console.log('its a tie')
-        } 
-    }
+
+
 
     
     
