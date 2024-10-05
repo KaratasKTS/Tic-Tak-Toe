@@ -2,29 +2,27 @@ const boxes = document.querySelectorAll('.box').forEach( box => box.addEventList
 
 // IIFE HOLDING PRIVATE OBJECTS AND METHODS  
 let init = (() => {
-    let score = { playerOne: true  , playerTwo : false };
+    let score = { playerOne: true };
     let gameboard = [] ; 
    
    for( let i=0; i !==3 ;  i++ ){
        gameboard[i] = [];
        for(let j = 0; j < 3; j++)
-        gameboard[i][j] = i*2;
+        gameboard[i][j] = null;
    
    }
     console.log(gameboard);
     
     const truePlayerOne = () => score.playerOne = true;
-    const truePlayerTwo = () => score.playerTwo = true;
+    
     const falsePlayerOne = () => score.playerOne = false;
-    const falsePlayerTwo = () => score.playerTwo = false;
-    return {score , gameboard, truePlayerOne, truePlayerTwo, falsePlayerOne, falsePlayerTwo };
+    
+    return {score , gameboard, truePlayerOne,  falsePlayerOne };
    
    })()
-/* gets the boxes event and target atributes check player status and edits array with either X OR O,
-NEED TO MAKE  APPEND TO DOM TOO 
-*/
+
 function handleEvent(event) {
-    const { score, gameboard, truePlayerOne, truePlayerTwo, falsePlayerOne, falsePlayerTwo, } = init;
+    const { score, gameboard, truePlayerOne,  falsePlayerOne, } = init;
     let boxed = event.target;
     let row = boxed.getAttribute('data-row');
     let col = boxed.getAttribute('data-col');
@@ -56,28 +54,49 @@ function evalBoard (){
     const {gameboard} = init;
       
 
-        if (gameboard[0][0] === gameboard[0][1] && gameboard[0][1] === gameboard[0][2]){
-            console.log('yay horizontal matched ') 
-            } 
-        
-            else if (gameboard[0][0] === gameboard[1][1] && gameboard[1][1] === gameboard[2][2]||
-                gameboard[2][0] === gameboard[1][1] && gameboard[1][1] === gameboard[0][2]){
-            console.log('yay crosses matched ') ;
+        if (gameboard[0][0] === 'X'  &&  gameboard[0][1]=== 'X' &&  gameboard[0][2] === 'X'){
+            console.log('yay X wins') ;
+            } else if ( gameboard[0][0] === 'O'  &&  gameboard[0][1]=== 'O' &&  gameboard[0][2] === 'O'){
+                console.log('yay O wins') ;
             }
-            else if(gameboard[0][0] === gameboard[1][0] && gameboard[1][0] === gameboard[2][0]||
-               gameboard[0][1] === gameboard[1][1] && gameboard[1][1] === gameboard[2][1]||
-               gameboard[0][2] === gameboard[1][2] && gameboard[1][2] === gameboard[2][2]){
-                console.log('yay vertical matched ');
+        
+            if (gameboard[0][0] === 'X' &&  gameboard[1][1] === 'X' &&  gameboard[2][2] === 'X'||
+                gameboard[2][0] === 'X' && gameboard[1][1] === 'X' && gameboard[0][2] ==='X'){
+                
+                    console.log('yay X wins') ;
+            
+                }else if (gameboard[0][0] === 'O' &&  gameboard[1][1] === 'O' &&  gameboard[2][2] === 'O'||
+                      gameboard[2][0] === 'O' && gameboard[1][1] === 'O' && gameboard[0][2] ==='O'){
+                        console.log('yay O wins') ;
+                }
+           
+             if(gameboard[0][0] === 'X' && gameboard[1][0] === 'X' && gameboard[2][0] ==='X'||
+               gameboard[0][1] === 'X' && gameboard[1][1] ==='X' && gameboard[2][1]==='X'||
+               gameboard[0][2] === 'X' && gameboard[1][2] === 'X' && gameboard[2][2]==='X'){
+                console.log('yay X wins') ;
+              
+            } else if (gameboard[0][0] === 'O' && gameboard[1][0] === 'O' && gameboard[2][0] ==='O'||
+                gameboard[0][1] === 'O' && gameboard[1][1] ==='O' && gameboard[2][1]==='O'||
+                gameboard[0][2] === 'O' && gameboard[1][2] === 'O' && gameboard[2][2]==='O'){
+                    console.log('yay O wins') ;
                }
               
             
             }
 
+function cleanUp (){
+const { gameboard} = init;
+ for(let i = 0; i < 3; i++ ){
+    gameboard[i] = [];
+    for( let j = 0; j<3; j++ )
+        gameboard[i][j] = '';
+    
+ }
 
-
+}
 
     
-    
+    cleanUp();
        
     
         
