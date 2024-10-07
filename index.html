@@ -35,17 +35,39 @@
             <section class="scores">
               
               <div class="playerOne">
-                <h1> Player 1 </h1>
+                <h1 class="change"> Player 1 </h1>
                 <div class="scorePlayer1"></div>
               </div>
   
               <div class="playerTwo">
-                <h1> Player 2 </h1>
+                <h1 class="change2"> Player 2 </h1>
                 <div class="scorePlayer2"></div>
               </div>
               
             </section>
   </div>
+  <section class="PlayerInput">
+   <div class="PlayerInput1">
+    <div class="wrapper1">
+      <label for="playerOne" class="player-label">Player One</label>
+      <input type="text" class="player-input" id="playerOne" placeholder="Enter Player One Name" required>
+    </div>
+
+    <div class="wrapper2">
+      <label for="playerTwo" class="player-label2">Player Two</label>
+      <input type="text" class="player-input2" id="playerTwo" placeholder="Enter Player Two Name" required>
+    </div>
+   
+   </div>
+   <button type="submit" onClick="changeName()" class="submit-button">Submit</button>
+    
+    
+</section>
+
+
+
+
+
   
 
 

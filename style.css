@@ -9,7 +9,7 @@ html, body{
     align-items: center;
     height: 100%;
     flex-direction: column;
-    gap:300px;
+    gap:100px;
     
 }
 
@@ -64,4 +64,25 @@ html, body{
   }
   .h1Heading{
     font-size:20px;;
+  }
+  
+  .PlayerInputnNone{
+    display: none;
+  }
+  .wrapper1,.wrapper2,.player-input2,.player-input{
+    display: flex;
+    flex-direction:column;
+    text-align: center;
+    
+  }
+
+  .PlayerInput{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .PlayerInput1{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
   }
