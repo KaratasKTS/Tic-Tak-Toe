@@ -74,6 +74,7 @@ body::before{
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    color:white;
   }
   button{
     background-color: transparent;
